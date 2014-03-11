@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="small-2 large-4 columns large-offset-4">
+    <fieldset style="align-content: center">
+      <legend> Criar conta</legend>
+
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div><%= f.label :email %><br />
+          <%= f.email_field :email, :autofocus => true %></div>
+
+          <div><%= f.label 'senha' %><br />
+          <%= f.password_field :password %></div>
+
+          <div><%= f.label 'confirma senha' %><br />
+          <%= f.password_field :password_confirmation %></div>
+
+          <div><%= f.submit "Criar conta" %></div>
+        <% end %>
+
+    </fieldset>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<h2>Editar galinha</h2>
+
+<%= form_tag '/galinha/editar' do %>
+    <%= hidden_field_tag 'chicken[id]', locals[:chicken].id %>
+    <%= label_tag 'Name' %>
+    <%= text_field_tag 'chicken[name]',locals[:chicken].name %><br>
+    <%= label_tag 'Color' %>
+    <%= text_field_tag 'chicken[color]',locals[:chicken].color %><br>
+
+    <%= submit_tag 'Salvar', :class => 'button', :id => 'editar'%>
+<% end %>

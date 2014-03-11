@@ -1,0 +1,48 @@
+<% if (@eggs.empty?) %>
+    <h3 style="text-align: center" >Nenhuma galinha botou ovo :(</h3>
+<% else %>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#container').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Browser market shares at a specific website, 2010'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            color: '#000000',
+                            connectorColor: '#000000',
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        }
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Browser share',
+                    data: [
+                        <% @chickens.each do |c| %>
+                            ['<%= c.name %>', <%= c.eggs.length %>],
+                        <% end %>
+                    ]
+                }]
+            });
+        });
+
+
+    </script><script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+    <div id="container" style="min-width: 500px; height: 500px; margin: 0 auto"></div>
+<% end %>

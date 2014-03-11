@@ -1,0 +1,73 @@
+$(document).ready(function(){
+    abaterGalinha();
+    botarOvo();
+    comerOvo();
+    mostrarGrafico();
+    esconderGrafico();
+});
+
+function abaterGalinha(){
+    $('.botaoAbater').unbind('click').click(function(){
+        var chicken_id = $(this).attr('chicken-id');
+        $.post('/galinha/delete',{chicken_id: chicken_id},function(data){
+            if(data.status == 'success'){
+                $('#excluir'+chicken_id).foundation('reveal', 'close');
+                $('tr[chicken-row="'+chicken_id+'"]').hide('slow');
+            }else{
+                alert('Ocorreu um erro inesperado...');
+            }
+        });
+    });
+}
+
+function botarOvo(){
+    $('.botarOvo').unbind('click').click(function(){
+        var chicken_id = $(this).attr('chicken-id');
+        $.get('/egg/put/'+chicken_id,function(data){
+            if(data.status == 'success'){
+                var row = $('tr[chicken-row="'+chicken_id+'"]');
+                var oldEggNumber = parseInt(row.find('td:eq(5)').text());
+                var newEggNumber = oldEggNumber + 1;
+                row.find('.eggCounter').text(newEggNumber);
+            }else{
+                alert("Voce precisa estar logado!!!");
+            }
+        });
+    });
+}
+
+function comerOvo(){
+    $('.comerOvo').unbind('click').click(function(){
+        var chicken_id = $(this).attr('chicken-id');
+        $.get('/egg/eat/'+chicken_id,function(data){
+            if(data.status == 'success'){
+                var row = $('tr[chicken-row="'+chicken_id+'"]');
+                var oldEggNumber = parseInt(row.find('td:eq(5)').text());
+                if (oldEggNumber > 0){
+                    var newEggNumber = oldEggNumber - 1;
+                }
+                row.find('.eggCounter').text(newEggNumber);
+            }else{
+                alert("Voce precisa estar logado!!!");
+            }
+        });
+    });
+}
+
+function mostrarGrafico(){
+    $('#showChart').unbind('click').click(function(){
+        $('#containerChart').show('slow');
+        $('#form').hide('slow');
+        $('#mostrar').hide('slow');
+        $('#esconder').show('slow');
+    });
+}
+
+function esconderGrafico(){
+    $('#hideChart').unbind('click').click(function(){
+        $('#containerChart').hide('slow');
+        $('#form').show('slow');
+        $('#mostrar').show('slow');
+        $('#esconder').hide('slow');
+    });
+}

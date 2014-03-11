@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="row">
+    <div id="containerChart" style="display: none" class="small-6 large-centered columns">
+      <%= render 'grafico_ovos_total'  %>
+    </div>
+    <div class="large-offset-1 large-5 columns" style="align-content: center">
+      <a href="#" data-reveal-id="adicaoGalinha" data-reveal-ajax class="button">
+        Adicionar galinha
+      </a>
+      <div id="adicaoGalinha" class="reveal-modal tiny" data-reveal>
+        <%= render 'new_partial'  %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+
+    </div>
+    <div id="mostrar" class="large-offset-1 large-5 columns">
+      <button id="showChart"><i class="fa fa-plus"> Mostrar grafico </i></button>
+    </div>
+    <div id="esconder" class="large-offset-1 large-5 columns" style="display: none" >
+      <button id="hideChart" class="alert"> Esconder grafico <i class="fa fa-minus"></i></button>
+    </div>
+  </div>
+</div>
+<div id="form">
+  <%= render 'list_partial' %>
+</div>
+
+

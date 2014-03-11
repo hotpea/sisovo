@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+
+  </head>
+
+  <body>
+
+  <nav class="top-bar docs-bar hide-for-small" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/"><%= image_tag "ovo.jpg", size: '30x20' %>SisOvo</a></h1>
+      </li>
+    </ul>
+    <% if current_user then %>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="has-dropdown">
+            <a href="#">logado como - <%=  current_user.email %></a>
+            <ul class="dropdown">
+              <li><a href="/users/edit">Editar dados</a></li>
+              <li><%= link_to "Deslogar", destroy_user_session_path, :method => :delete %></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    <% else %>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="has-dropdown">
+            <a href="#">Identifique-se!</a>
+            <ul class="dropdown">
+              <li><a href="/users/sign_in">Logar</a></li>
+              <li><a href="/users/sign_up">Criar conta</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    <% end %>
+  </nav>
+  <% if flash[:success] %>
+    <div style="background-color: #00cbff; text-align: center"  data-alert class="alert-box">
+      <%= flash[:success] %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% elsif flash[:error] %>
+    <div style="background-color: crimson; text-align: center"  data-alert class="alert-box">
+      <%= flash[:error] %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
+  <div class="row" style="margin-top: 25px">
+    <%= yield %>
+  </div>
+  </body>
+</html>
+
