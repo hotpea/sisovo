@@ -1,9 +1,12 @@
-<div id="container" style="min-width: 500px; height: 500px; margin: 0 auto"></div>
-
 <% if (@eggs.empty?) %>
+    <div id="container">
+
+    </div>
     <h3 style="text-align: center" >Nenhuma galinha botou ovo :(</h3>
 <% else %>
+    <div id="container" style="min-width: 500px; height: 500px; margin: 0 auto">
 
+    </div>
     <script type="text/javascript">
         $(function () {
             $('#container').highcharts({

@@ -24,6 +24,7 @@ function abaterGalinha(){
 
 function botarOvo(){
     $('.botarOvo').unbind('click').click(function(){
+        $('#containerChart').load('galinha/grafico');
         var chicken_id = $(this).attr('chicken-id');
         $.get('/egg/put/'+chicken_id,function(data){
             if(data.status == 'success'){
@@ -40,6 +41,7 @@ function botarOvo(){
 
 function comerOvo(){
     $('.comerOvo').unbind('click').click(function(){
+        $('#containerChart').load('galinha/grafico');
         var chicken_id = $(this).attr('chicken-id');
         $.get('/egg/eat/'+chicken_id,function(data){
             if(data.status == 'success'){
