@@ -65,8 +65,8 @@ GEM
       railties (>= 3.1.0)
       sass (>= 3.2.0)
     googlecharts (1.6.8)
-    highcharts-js-rails (1.0.0)
-      railties (>= 3.1, < 4.1)
+    highcharts-rails (3.0.10)
+      railties (>= 3.1)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -106,7 +106,7 @@ GEM
     rake (10.1.1)
     rdoc (3.12.2)
       json (~> 1.4)
-    sass (3.3.1)
+    sass (3.3.2)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -144,7 +144,7 @@ DEPENDENCIES
   font-awesome-rails
   foundation-rails
   googlecharts (~> 1.6.8)
-  highcharts-js-rails (~> 1.0.0)
+  highcharts-rails (~> 3.0.0)
   jquery-rails
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)

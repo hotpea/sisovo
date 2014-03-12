@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    $('#containerChart').load('galinha/grafico');
+
     abaterGalinha();
     botarOvo();
     comerOvo();
@@ -56,6 +58,7 @@ function comerOvo(){
 
 function mostrarGrafico(){
     $('#showChart').unbind('click').click(function(){
+        $('#containerChart').load('galinha/grafico');
         $('#containerChart').show('slow');
         $('#form').hide('slow');
         $('#mostrar').hide('slow');

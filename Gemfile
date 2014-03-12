@@ -15,7 +15,7 @@ gem 'googlecharts', '~> 1.6.8'
 
 gem 'font-awesome-rails'
 
-gem 'highcharts-js-rails', '~> 1.0.0'
+gem 'highcharts-rails', '~> 3.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.

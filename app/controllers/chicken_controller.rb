@@ -1,5 +1,5 @@
 class ChickenController < ApplicationController
-  before_filter :check_login, :except => [:index]
+  before_filter :check_login, :except => [:index, :grafico_ovos_total]
   before_filter :load
 
   def load

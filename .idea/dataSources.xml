@@ -7,6 +7,12 @@
       <jdbc-url>jdbc:sqlite:C:\Sites\SisOvo\db\development.sqlite3</jdbc-url>
       <libraries />
     </data-source>
+    <data-source source="LOCAL" name="Rails SisOvo: test" uuid="849cde24-fdb7-4404-81aa-53fa2f5fce63">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Sites\SisOvo\db\test.sqlite3</jdbc-url>
+      <libraries />
+    </data-source>
   </component>
 </project>
 
