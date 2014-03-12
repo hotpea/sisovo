@@ -16,7 +16,7 @@ function abaterGalinha(){
                 $('#excluir'+chicken_id).foundation('reveal', 'close');
                 $('tr[chicken-row="'+chicken_id+'"]').hide('slow');
             }else{
-                alert('Ocorreu um erro inesperado...');
+                alert('Voce precisa estar logado!!!');
             }
         });
     });
@@ -50,7 +50,7 @@ function comerOvo(){
                 }
                 row.find('.eggCounter').text(newEggNumber);
             }else{
-                alert("Voce precisa estar logado!!!");
+                alert("Não é possivel realizar esta ação!!!");
             }
         });
     });

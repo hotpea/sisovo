@@ -47,7 +47,7 @@ class ChickenController < ApplicationController
       @chicken.destroy
       render :json => {:status => 'success'}
     rescue StandardError => ex
-      render :json => {:status => 'error'}
+      render :json => {:status => ex.message}
     end
   end
 
