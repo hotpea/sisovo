@@ -8,12 +8,12 @@ SisOvo::Application.routes.draw do
   post 'galinha/editar' => 'chicken#update'
   post 'galinha/delete' => 'chicken#destroy'
   get 'galinha/grafico' => 'chicken#grafico_ovos_total'
+  get 'galinha/lista' => 'chicken#list'
 
   get 'egg/put/:id' => 'egg#put'
   get 'egg/eat/:id' => 'egg#eat'
 
   get 'login/partial' => 'users#_new_patial'
-  match 'chicken/chart'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

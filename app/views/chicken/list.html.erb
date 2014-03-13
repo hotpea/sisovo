@@ -1,0 +1,62 @@
+<% if ((@chickens.empty?) && (!@eggs.nil?)) %>
+    <h3 style="text-align: center" >Sem galinhas registradas</h3>
+<% else %>
+    <div id="list_partial" class="row">
+      <div class="small-12 columns row">
+        <table>
+          <thead>
+          <tr>
+            <td width="5%" >Id</td>
+            <td width="30%" >Nome</td>
+            <td width="30%" >Cor</td>
+            <td width="15%" >Ações</td>
+            <td width="20%" >Ovos</td>
+          </tr>
+          </thead>
+          <% @chickens.each do |c| %>
+              <tr chicken-row="<%= c.id %>">
+                <td><%= c.id %></td>
+                <td><%= c.name %></td>
+                <td><%= c.color %></td>
+                <td>
+                    <span data-tooltip class="has-tip" title="Editar galinha">
+                        <a href="#" data-reveal-id="editar<%= c.id %>" data-reveal-ajax class="button tiny">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                    </span>
+
+                    <span data-tooltip class="has-tip" title="Excluir galinha">
+                        <a href="#" data-reveal-id="excluir<%= c.id %>" data-reveal-ajax class="button tiny alert">
+                          <i class="fa fa-times"></i>
+                        </a>
+                    </span>
+
+                  <div id="editar<%= c.id %>" class="reveal-modal tiny" data-reveal class="button tiny">
+                    <%= render "edit_partial",:locals => { :chicken => c } %>
+                    <a class="close-reveal-modal">&#215;</a>
+                  </div>
+
+                  <div id="excluir<%= c.id %>" class="reveal-modal tiny" data-reveal class="button tiny">
+                    <h2>Excluir galinha</h2>
+                    <p class="lead">Quer mesmo abater essa galinha?</p>
+                    <button chicken-id="<%= c.id %>" class="button botaoAbater">Abater</button>
+                    <a class="close-reveal-modal">&#215;</a>
+                  </div>
+                </td>
+                <td>
+                      <span data-tooltip class="has-tip" title="Botar ovo">
+                        <button chicken-id="<%= c.id %>" name="botar" class="button tiny botarOvo"><i class="fa fa-plus"></i></button>
+                      </span>
+                      <span data-tooltip class="has-tip" title="Comer ovo">
+                        <button chicken-id="<%= c.id %>" name="comer" class="button tiny alert comerOvo"><i class="fa fa-minus"></i></button>
+                      </span>
+                </td>
+                <td>
+                  <span class="eggCounter"><%= c.countEggs %></span>
+                </td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+<% end %>

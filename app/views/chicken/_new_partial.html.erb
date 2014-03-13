@@ -1,9 +1,6 @@
 <h1>Adicionar galinha</h1>
-
-<%= form_tag '/galinha/adicionar' do%>
-    <%= label_tag 'Nome' %>
-    <%= text_field_tag 'chicken[name]' %><br>
-    <%= label_tag 'Cor' %>
-    <%= text_field_tag 'chicken[color]' %><br>
-    <%= submit_tag 'Salvar', :class => 'button', :id => 'salvar'%>
-<% end %>
+<%= label_tag 'Nome' %>
+<%= text_field_tag 'chicken[name]' %><br>
+<%= label_tag 'Cor' %>
+<%= text_field_tag 'chicken[color]' %><br>
+<%= submit_tag 'Salvar', :class => 'button botaoSalvar', :id => 'salvar'%>

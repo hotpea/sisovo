@@ -1,7 +1,11 @@
 $(document).ready(function(){
     $('#containerChart').load('galinha/grafico');
+    $('#form').load('galinha/lista', function(){
+        $('#form').show('slow');
+    });
 
     abaterGalinha();
+    atualizaLista();
     botarOvo();
     comerOvo();
     mostrarGrafico();
@@ -15,6 +19,21 @@ function abaterGalinha(){
             if(data.status == 'success'){
                 $('#excluir'+chicken_id).foundation('reveal', 'close');
                 $('tr[chicken-row="'+chicken_id+'"]').hide('slow');
+            }else{
+                alert('Voce precisa estar logado!!!');
+            }
+        });
+    });
+}
+
+function atualizaLista(){
+    $('.botaoSalvar').unbind('click').click(function(){
+        alert('foi');
+        $.post('/galinha/adicionar',function(data){
+            if(data.status == 'success'){
+                $('#form').load('galinha/lista', function(){
+                    $('#form').show('slow');
+                });
             }else{
                 alert('Voce precisa estar logado!!!');
             }
@@ -76,3 +95,4 @@ function esconderGrafico(){
         $('#esconder').hide('slow');
     });
 }
+

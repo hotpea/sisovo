@@ -1,5 +1,4 @@
 class ChickenController < ApplicationController
-  before_filter :check_login, :except => [:index, :grafico_ovos_total]
   before_filter :load
 
   def load
@@ -18,14 +17,11 @@ class ChickenController < ApplicationController
   end
 
   def create
-    @chicken = Chicken.create(params[:chicken])
-
-    if @chicken.save
-      flash[:success] = "Galinha adicionada!!!"
-      redirect_to '/'
-    else
-      flash[:error] = "Dados invalidos!!!"
-      redirect_to '/'
+    begin
+      @chicken = Chicken.create(params[:chicken])
+      render :json => {:status => 'success'}
+    rescue StandardError => ex
+      render :json => {:status => 'error'}
     end
   end
 
@@ -38,7 +34,6 @@ class ChickenController < ApplicationController
     else
       flash[:error] = ex.message
     end
-      redirect_to '/'
   end
 
   def destroy
@@ -55,6 +50,10 @@ class ChickenController < ApplicationController
   end
 
   def grafico_ovos_total
+    render :layout => false
+  end
+
+  def list
     render :layout => false
   end
 end
