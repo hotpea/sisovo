@@ -14,4 +14,5 @@
 /log/*.log
 /tmp
 .idea
-.vendor
+/vendor
+/db/development.sqlite3
